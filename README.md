@@ -3,7 +3,7 @@
 ##  פרטי מגישים
 * **סטודנט 1**: עמית גינזבורג | ת.ז: `313393027`
 * **סטודנט 2**: הדר קלר | ת.ז: `209825512`
-* **קישור למאגר (GitHub)**: [https://github.com/amitginz](https://github.com/amitginz)
+* **קישור למאגר (GitHub)**: [https://github.com/amitginz/pizza-app](https://github.com/amitginz/pizza-app)
 
 ---
 
