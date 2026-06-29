@@ -55,7 +55,7 @@ app.post('/api/orders', (req, res) => {
 
   for (const item of pizzas) {
     // וולידציה מתוקנת: תומכת ב-item.type ו-item.size
-    if (!MENU.pizzas[item.type] || !MENU.sizes[item.size]) {
+    if (!(item.type in MENU.pizzas) || !(item.size in MENU.sizes)) {
       return res.status(400).json({ error: 'Invalid pizza type or size.' });
     }
     if (!Array.isArray(item.toppings) || item.toppings.length > 3) {
@@ -69,7 +69,7 @@ app.post('/api/orders', (req, res) => {
 
     let pizzaPrice = MENU.pizzas[item.type] + MENU.sizes[item.size];
     for (const topping of item.toppings) {
-      if (!MENU.toppings[topping]) {
+      if (!(topping in MENU.toppings)) {
         return res.status(400).json({ error: `Invalid topping: ${topping}` });
       }
       pizzaPrice += MENU.toppings[topping];
