@@ -62,10 +62,9 @@ app.post('/api/orders', (req, res) => {
       return res.status(400).json({ error: 'Each pizza can have maximum 3 toppings.' });
     }
 
-    // כלל אישי (ספרה אחרונה 8): מניעת כפל תוספות זהות
-    const uniqueToppings = new Set(item.toppings);
-    if (uniqueToppings.size !== item.toppings.length) {
-      return res.status(400).json({ error: 'Cannot choose the same topping multiple times on a single pizza.' });
+    // כלל אישי (ספרה אחרונה 7): פיצת פפרוני אינה יכולה לכלול תירס
+    if (item.type === 'Pepperoni' && item.toppings.includes('Corn')) {
+      return res.status(400).json({ error: 'Pepperoni pizza cannot include Corn.' });
     }
 
     let pizzaPrice = MENU.pizzas[item.type] + MENU.sizes[item.size];
